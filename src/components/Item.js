@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card, Image, Icon } from 'semantic-ui-react'
-import { Link } from "react-router-dom";
 import { totalCost, capitalize } from '../helpers'
 
 function Item({ item }) {
@@ -37,9 +36,8 @@ function Item({ item }) {
       <Card.Content>
         <Card.Header>
           {capitalize(name)}
-          <Link to={`./edit/${name}`}>
+            {/*Link will go here for edit*/}
             <Icon name="write" size="small" color="black"/>
-          </Link>
         </Card.Header>
         <Card.Description content={`Category: ${category}`} />
         <Card.Description content={`Amount: ${amount}${unitMeasurement}`} />

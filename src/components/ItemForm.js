@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useHistory, useRouteMatch } from "react-router-dom";
+
 import {
   Button,
   Form,
@@ -39,23 +39,9 @@ const emptyFields =  {
 function ItemForm({ onAddItem, inventory }) {
   const [formData, setFormData] = useState(emptyFields)
 
-  const {name} = useParams()
-  const history = useHistory()
-  const match = useRouteMatch()
-  const containsItem = inventory.some(item => item.name === name);
-
-  useEffect(() => {
-    if (name && containsItem) {
-      const itemToChange = inventory.find(item => item.name === name);
-      setFormData(itemToChange)
-    } else {
-      setFormData(emptyFields)
-    }
-  }, [name, inventory, containsItem])
-
-  if (match.path === '/edit/:name' && !containsItem) {
-    return <h1>404 not found!</h1>
-  }
+  /*
+    Try reusing this component when trying to edit an item
+  */
 
   function handleFormChange(e, { name, value }) {
     const changes = { ...formData, [name]: value}
@@ -85,7 +71,7 @@ function ItemForm({ onAddItem, inventory }) {
       .then(data => {
         onAddItem(data)
         setFormData(emptyFields)
-        history.push('/inventory')
+        /*Push the web page back to inventory */
       })
     } else {
       fetch('http://localhost:3004/inventory', {
@@ -99,7 +85,7 @@ function ItemForm({ onAddItem, inventory }) {
       .then(data => {
         onAddItem(data)
         setFormData(emptyFields)
-        history.push('/inventory')
+        /*Push the web page back to inventory */
       })
     }
   }

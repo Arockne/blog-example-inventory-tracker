@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 
 const linkStyle = {
   margin: '0 1rem',
@@ -23,9 +22,7 @@ const active = {
 function NavBar() {
   return (
     <nav>
-      <NavLink exact to="/" style={linkStyle} activeStyle={active}>Home</NavLink>
-      <NavLink exact to="/inventory" style={linkStyle} activeStyle={active}>Inventory</NavLink>
-      <NavLink exact to="/new" style={linkStyle} activeStyle={active}>New</NavLink>
+      {/* Place some navlinks here */}
     </nav>
   )
 }

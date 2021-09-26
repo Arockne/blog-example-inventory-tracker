@@ -4,7 +4,6 @@ import NavBar from './NavBar'
 import Home from './Home'
 import InventoryPage from './InventoryPage'
 import ItemForm from './ItemForm'
-import { Route, Switch } from "react-router-dom";
 
 function App() {
   const [inventory, setInventory] = useState([])
@@ -32,23 +31,10 @@ function App() {
     <div className="App">
       <HeaderBlock />
       <NavBar />
-      <Switch>
-        <Route exact path="/">
-          <Home inventory={inventory}/>
-        </Route>
-        <Route exact path="/inventory">
-          <InventoryPage inventory={inventory} />
-        </Route>
-        <Route exact path="/new">
-          <ItemForm onAddItem={handleAddItem} inventory={inventory}/>
-        </Route>
-        <Route exac path="/edit/:name">
-          <ItemForm onAddItem={handleItemEdit} inventory={inventory}/>
-        </Route>
-        <Route path="/*">
-          <h1>404 Not Found!</h1>
-        </Route>
-      </Switch>
+      {/*Initialize some routes here */}
+      <Home inventory={inventory}/>
+      <InventoryPage inventory={inventory} />
+      <ItemForm onAddItem={handleAddItem} inventory={inventory}/>
     </div>
   );
 }
